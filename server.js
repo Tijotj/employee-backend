@@ -8,7 +8,13 @@ const leaveRoutes = require('./routes/leave.routes');
 
 const app = express();
 
-app.use(cors());
+app.use(cors({ 
+  origin: 'https://employee-frontend1-zeta.vercel.app',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true
+}));
+app.options('*', cors());
 app.use(express.json());
 
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/employeedb')
