@@ -12,7 +12,6 @@ app.use(cors({
   origin: 'https://employee-frontend1-zeta.vercel.app',
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true
 }));
 app.use(express.json());
 
