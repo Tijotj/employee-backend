@@ -8,8 +8,13 @@ const leaveRoutes = require('./routes/leave.routes');
 
 const app = express();
 
+const allowedOrigins = [
+  'http://localhost:4200',
+  'https://employee-frontend1-zeta.vercel.app'
+];
+
 app.use(cors({ 
-  origin: 'https://employee-frontend1-zeta.vercel.app',
+  origin: allowedOrigins,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 }));
@@ -22,8 +27,6 @@ app.use((req, res, next) => {
 });
 
 app.use(express.json());
-
-console.log('MONGODB_URI at runtime:', process.env.MONGODB_URI);
 
 mongoose.connect(process.env.MONGODB_URI)
   .then(() => console.log('MongoDB connected'))
