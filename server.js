@@ -23,6 +23,8 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 
+console.log('MONGODB_URI at runtime:', process.env.MONGODB_URI);
+
 mongoose.connect(process.env.MONGODB_URI)
   .then(() => console.log('MongoDB connected'))
   .catch(err => {
